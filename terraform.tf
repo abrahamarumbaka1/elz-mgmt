@@ -11,6 +11,14 @@ terraform {
     }
   }
   backend "azurerm" {}
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "abrahamarumbaka-org"
+
+    workspaces {
+      name = "dev"
+    }
+  }
 }
 
 provider "azapi" {
