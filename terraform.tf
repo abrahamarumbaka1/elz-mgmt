@@ -10,7 +10,15 @@ terraform {
       version = "~> 1.13"
     }
   }
-  backend "azurerm" {}
+  ##backend "azurerm" {}
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "abrahamarumbaka-org"
+
+    workspaces {
+      name = "dev"
+    }
+  }
 }
 
 provider "azapi" {
